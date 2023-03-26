@@ -244,7 +244,12 @@ let userRepasswordAlert  = document.getElementById("repasswordalert");
 
 
 
+userNameAlert.style.display="none";
 userAgeAlert.style.display="none";
+userpasswordAlert.style.display="none";
+userRepasswordAlert.style.display="none";
+userEmailAlert.style.display="none";
+userPhoneAlert.style.display="none";
 
 
 addEventListener("click",function(){
