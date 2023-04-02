@@ -40,25 +40,20 @@ async function getTrendingMovies(){
 }
 
 function displayMovies(array){
-    
     let movie = "";
     for (let i = 0; i < array.length; i++) {
+        let poster_path = ``;
+                if (response.results[i].poster_path==null) {
 
-        let pas= response.results[i].poster_path;
-        if (pas=="null") {
-            $('.image').attr('src',`https://image.tmdb.org/t/p/original/3jE3pFIN42ykmgcMLwDGjqwcmUI.jpg` );
+                    poster_path = `https://image.tmdb.org/t/p/original/3jE3pFIN42ykmgcMLwDGjqwcmUI.jpg`;
         } else {
-            $('.image').attr('src',`https://image.tmdb.org/t/p/original${pas}` );
+            poster_path = `https://image.tmdb.org/t/p/original${response.results[i].poster_path}`;
         }
-      
-       
         movie+=`
-        
         <div class="col-md-6 col-lg-4 my-3 myM  shadow">
         <div class="movie shadow rounded position-relative">
             <div class="post">
-
-                <img class="image w-100" src= "https://image.tmdb.org/t/p/original${pas}">
+                <img class="image w-100" src= "https://image.tmdb.org/t/p/original${poster_path }">
             </div>
             <div class="layer d-flex align-items-center">
                 <div class="info p-0">
@@ -67,21 +62,14 @@ function displayMovies(array){
                     <p>${response.results[i].vote_average}</p> 
                     <p>${response.results[i].release_date}</p> 
                 </div>
-
             </div>
-
         </div>
     </div>
         `
-      
-      
     }
-    
     document.getElementById("rowData").innerHTML = movie;
-
 }
 
-// getTrendingMovies();
 
 
 
